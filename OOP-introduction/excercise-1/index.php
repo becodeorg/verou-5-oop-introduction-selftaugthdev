@@ -17,13 +17,12 @@ USE TYPEHINTING EVERYWHERE!
 */
 
 //TODO: Create a class beverage.
-
-class Beverage = 
+class Beverage 
 {
     //TODO: Create the properties color (string), price (float) and temperature (string) and also foresee a construct.
     public $color;
     public $price;
-    public $temperature cold;
+    public $temperature = "cold";
 
     // Constructor
     public function __construct(string $color, float $price, string $temperature)
@@ -37,6 +36,10 @@ class Beverage =
     //TODO: Make a getInfo function which returns "This beverage is <temperature> and <color>."
     public function getInfo()
     {
-        echo "This beverage is $this->temperature and $this->color."
+        echo "This beverage is $this->temperature and $this->color.";
     }
 }
+
+$cola = new Beverage("Black", 2, $temperature);
+
+$cola->getInfo();
