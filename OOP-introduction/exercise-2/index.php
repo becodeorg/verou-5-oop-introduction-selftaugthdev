@@ -19,23 +19,42 @@ Try to get this error on the screen= Fatal error: Uncaught Error: Call to undefi
 USE TYPEHINTING EVERYWHERE!
 */
 
-class beer
-{
-    public $name;
-    public $alcoholPercentage;
+declare(strict_types=1);
 
-    // Constructor
-    public function __construct(string $name, float $alcoholPercentage)
-    {
-        $this->$name = name;
-        $this->$alcoholPercentage = alcoholPercentage;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+//require_once '/excercise-1/Beverage.php';
+require_once '../exercise-1/Beverage.php';
+
+//require_once '/OOP-introduction/excercise-1/index.php';
+
+//require_once '../excercise-1/Beverage.php';
+
+class Beer extends Beverage {
+    public string $name;
+    public float $alcoholPercentage;
+
+    // Corrected constructor
+    public function __construct(string $name, float $alcoholPercentage, string $color, float $price) {
+        parent::__construct($color, $price, "cold");
+        $this->name = $name;
+        $this->alcoholPercentage = $alcoholPercentage;
     }
 
-    // Function
-    public function getAlcoholPercentage()
-    {
-        echo "$this->$name contains $this->$alcoholPercentage";
+    // function
+    public function getAlcoholPercentage(): string {
+        return "$this->name contains $this->alcoholPercentage% alcohol.";
     }
 }
 
-$Duvel = new Beverage
+// Instantiate a beer object representing Duvel
+$Duvel = new Beer("Duvel", 8.5, "blond", 3.5);
+
+// Using different methods to display information
+echo $Duvel->getInfo() . "\n";
+echo $Duvel->getAlcoholPercentage() . "\n";
+echo "Color: " . $Duvel->color . "\n";
+
+
